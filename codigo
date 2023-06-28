@@ -1,0 +1,93 @@
+import os
+
+listaCodigos = [100001,100002]
+listaNombres = ['zapato','bici']
+listaCategorias = ['paquete','paquete']
+listaPrecios = [2000, 10000]
+listaStock = [3,1]
+
+menu = """
+1.- Registrar producto
+2.- Buscar producto
+3.- Listar producto
+4.- Salir
+"""
+
+while True:
+    try:
+        opc = int(input(menu))
+        if opc == 4:
+            nombre = input("Cual es su nombre: ")
+            apellido = input("Cual es su apellido: ")
+            print(f"Adios {nombre} {apellido}")
+            print("Salida del programa \nVersión 1.0")
+            input("Enter para finalizar")
+            break
+        elif opc == 1:
+            while True:
+                try:
+                    codigo = input("codigo:")
+                    if len(codigo) == 6:
+                        listaCodigos.append(codigo)
+                        break
+                    else:
+                        print("error codigo")
+                except:
+                    print("excepcion codigo")
+            while True:
+                try:
+                    nombre = input("nombre: ")
+                    if len(nombre) >=2 and len(nombre) <= 50:
+                        listaNombres.append(nombre)
+                        break
+                    else:
+                        print("error nombre")
+                except:
+                    print("excepcion nombre")
+            while True:
+                try:
+                    categoria = input("categoria: ")
+                    if categoria == 'sobre' or categoria == 'paquete':
+                        listaCategorias.append(categoria)
+                        break
+                    else:
+                        print("error categoria")
+                except:
+                    print("excepcion categoria")
+            while True:
+                try:
+                    precio = int(input("precio: "))
+                    if precio > 0:
+                        listaPrecios.append(precio)
+                        break
+                    else:
+                        print("error precio")
+                except:
+                    print("excepcion precio")
+            while True:
+                try:
+                    stock = int(input("stock: "))
+                    if stock > 0:
+                        listaStock.append(stock)
+                        break
+                    else:
+                        print("error stock")
+                except:
+                    print("excepcion stock")
+        elif opc == 2:
+            # no logre que funcionara este for :(
+            print("Buscar producto por codigo: ")
+            buscar = input("codigo: ")
+            for i in range(len(listaCodigos)):
+                 if buscar == listaCodigos[i]:
+                     print("COD | NOMBRE | CATEGORIA | PRECIO | STOCK")
+                     print(f"{listaCodigos[i]:6d} | {listaNombres[i]:50s} | {listaCategorias[i]:10s} | {listaPrecios[i]:7d} | {listaStock[i]:3d} ")
+        elif opc == 3:
+              for i in range(len(listaCodigos)):
+                  print("COD | NOMBRE | CATEGORIA | PRECIO | STOCK")
+                  print(f"{listaCodigos[i]:6d} | {listaNombres[i]:50s} | {listaCategorias[i]:10s} | {listaPrecios[i]:7d} | {listaStock[i]:3d} ")        
+
+    except:
+        print("excepcion menu")
+
+
